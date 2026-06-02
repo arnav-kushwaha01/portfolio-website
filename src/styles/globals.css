@@ -1,0 +1,201 @@
+@import 'tailwindcss';
+
+@theme {
+  --color-space: #05070f;
+  --color-space-950: #030611;
+  --color-space-900: #05070f;
+  --color-space-800: #0b1020;
+  --color-space-700: #101828;
+  --color-orbit: #101828;
+  --color-starlight: #f8fafc;
+  --color-starlight-100: #e2e8f0;
+  --color-muted: #94a3b8;
+  --color-void: #64748b;
+  --color-plasma: #22d3ee;
+  --color-plasma-300: #67e8f9;
+  --color-plasma-400: #22d3ee;
+  --color-plasma-500: #06b6d4;
+  --color-nebula: #8b5cf6;
+  --color-nebula-400: #a78bfa;
+  --color-nebula-500: #8b5cf6;
+  --color-solar: #facc15;
+  --color-solar-300: #fde68a;
+  --color-solar-400: #facc15;
+  --font-sans:
+    Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI',
+    sans-serif;
+  --font-display: var(--font-sans);
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono',
+    monospace;
+  --shadow-glow-plasma: 0 0 40px rgba(34, 211, 238, 0.28);
+  --shadow-glow-nebula: 0 0 48px rgba(139, 92, 246, 0.24);
+}
+
+:root {
+  color-scheme: dark;
+  --background: #05070f;
+  --foreground: #f8fafc;
+  --surface: rgba(15, 23, 42, 0.72);
+  --surface-strong: rgba(15, 23, 42, 0.92);
+  --border-subtle: rgba(255, 255, 255, 0.1);
+  --border-strong: rgba(103, 232, 249, 0.36);
+  --text-primary: #f8fafc;
+  --text-secondary: #cbd5e1;
+  --text-muted: #94a3b8;
+  --accent-primary: #22d3ee;
+  --accent-secondary: #8b5cf6;
+  --accent-warm: #facc15;
+  --radius-card: 0.5rem;
+  --radius-control: 999px;
+  --container-page: 80rem;
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  background: var(--background);
+}
+
+body {
+  min-width: 320px;
+  min-height: 100svh;
+  margin: 0;
+  background:
+    radial-gradient(circle at 20% 0%, rgba(34, 211, 238, 0.08), transparent 28rem),
+    radial-gradient(circle at 80% 10%, rgba(139, 92, 246, 0.08), transparent 26rem),
+    var(--background);
+  color: var(--foreground);
+  overflow-x: hidden;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+::selection {
+  background: rgba(34, 211, 238, 0.28);
+  color: var(--foreground);
+}
+
+@layer base {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    margin: 0;
+    font-family: var(--font-display);
+    font-weight: 650;
+    letter-spacing: 0;
+    color: var(--text-primary);
+  }
+
+  h1 {
+    font-size: clamp(3rem, 8vw, 7.5rem);
+    line-height: 0.95;
+  }
+
+  h2 {
+    font-size: clamp(2rem, 5vw, 4.5rem);
+    line-height: 1;
+  }
+
+  h3 {
+    font-size: clamp(1.5rem, 3vw, 2.5rem);
+    line-height: 1.08;
+  }
+
+  p {
+    margin: 0;
+    color: var(--text-secondary);
+    line-height: 1.75;
+  }
+}
+
+@layer utilities {
+  .page-shell {
+    min-height: 100svh;
+    background: var(--background);
+    color: var(--foreground);
+  }
+
+  .container-page {
+    width: min(100% - 2rem, var(--container-page));
+    margin-inline: auto;
+  }
+
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .text-pretty {
+    text-wrap: pretty;
+  }
+
+  .text-gradient-cosmic {
+    background: linear-gradient(135deg, #f8fafc 0%, #67e8f9 48%, #a78bfa 100%);
+    background-clip: text;
+    color: transparent;
+  }
+
+  .glass-panel {
+    border: 1px solid var(--border-subtle);
+    background: var(--surface);
+    box-shadow: 0 18px 80px rgba(0, 0, 0, 0.32);
+    backdrop-filter: blur(18px);
+  }
+
+  .glow-plasma {
+    box-shadow: var(--shadow-glow-plasma);
+  }
+
+  .glow-nebula {
+    box-shadow: var(--shadow-glow-nebula);
+  }
+
+  .hairline-top {
+    position: relative;
+  }
+
+  .hairline-top::before {
+    position: absolute;
+    inset-inline: 0;
+    top: 0;
+    height: 1px;
+    content: '';
+    background: linear-gradient(90deg, transparent, rgba(103, 232, 249, 0.45), transparent);
+  }
+
+  .gpu-layer {
+    transform: translateZ(0);
+    will-change: transform;
+  }
+
+  .focus-ring {
+    outline: 2px solid transparent;
+    outline-offset: 2px;
+  }
+
+  .focus-ring:focus-visible {
+    outline-color: var(--accent-primary);
+  }
+}
